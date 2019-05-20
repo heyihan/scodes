@@ -6,6 +6,7 @@
 # Folders
 _obj
 _test
+euler/go/out
 
 # Architecture specific extensions/prefixes
 *.[568vq]
