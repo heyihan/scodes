@@ -7,6 +7,7 @@
 _obj
 _test
 euler/go/out
+makeOS/out
 
 # Architecture specific extensions/prefixes
 *.[568vq]

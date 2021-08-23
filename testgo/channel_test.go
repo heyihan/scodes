@@ -1,7 +1,8 @@
-package main
+package testgo
 
 import(
 	"fmt"
+    "testing"
 )
 
 func testCloseNilChannel() error {
@@ -20,21 +21,20 @@ func testCloseChannelTwice() error {
 	return nil
 }
 
-func main() {
-	Do(testCloseNilChannel)
-	Do(testCloseChannelTwice)
+func TestChannel(t *testing.T) {
+	Do(t, testCloseNilChannel)
+	Do(t, testCloseChannelTwice)
 }
 
-func Do(f func()error) {
+func Do(t *testing.T, f func()error) {
 	defer func(){
 		if err := recover(); err != nil {
-			fmt.Printf("fail: panic, %v\n", err)
+			t.Error(fmt.Printf("fail: panic, %v\n", err))
 		}
 	}()
 	err := f()
 	if err != nil {
-		fmt.Printf("fail: error, %v\n", err)
-		return
+		t.Error(fmt.Printf("fail: error, %v\n", err))
 	}
 	fmt.Println("ok")
 }
